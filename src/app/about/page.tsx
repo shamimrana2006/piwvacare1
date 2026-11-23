@@ -44,9 +44,9 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex w-20 h-20 rounded-3xl overflow-hidden mx-auto mb-6 shadow-xl"
+            className="inline-flex h-12 w-40 relative mx-auto mb-6"
           >
-            <Image src="/logo/piwva.jpeg" alt="Piwva" width={80} height={80} className="object-cover" />
+            <Image src="/logo/piwva.png" alt="Piwva" fill className="object-contain" priority />
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

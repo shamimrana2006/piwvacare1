@@ -43,11 +43,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl overflow-hidden">
-                <Image src="/logo/piwva.jpeg" alt="Piwva" width={36} height={36} className="object-cover" />
+            <div className="mb-4">
+              <div className="relative h-8 w-28">
+                <Image
+                  src="/logo/piwva-white.png"
+                  alt="Piwva"
+                  fill
+                  className="object-contain object-left"
+                />
               </div>
-              <span className="font-display font-bold text-xl text-white">Piwva</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-5">
               Your trusted baby care companion. Quality products, trusted information, and a supportive community — all in one place.

@@ -76,19 +76,16 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="relative w-9 h-9 rounded-xl overflow-hidden shadow-md group-hover:shadow-lg transition-shadow">
+            <Link href="/" className="flex items-center group py-1" aria-label="Piwva Home">
+              <div className="relative h-8 sm:h-9 w-28 sm:w-32 transition-transform duration-200 group-hover:scale-105">
                 <Image
-                  src="/logo/piwva.jpeg"
+                  src="/logo/piwva.png"
                   alt="Piwva"
                   fill
-                  className="object-cover"
+                  className="object-contain object-left"
                   priority
                 />
               </div>
-              <span className="font-display font-bold text-xl gradient-text hidden sm:block">
-                Piwva
-              </span>
             </Link>
 
             {/* Desktop Nav */}
