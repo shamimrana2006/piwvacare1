@@ -21,6 +21,7 @@ export default function ProductDetailPage() {
   const [added, setAdded] = useState(false);
   const [wishlisted, setWishlisted] = useState(false);
   const [qty, setQty] = useState(1);
+  const detailImgRef = React.useRef<HTMLDivElement>(null);
 
   const images = [product.image, product.image, product.image];
   const discount = product.discountPrice
@@ -28,8 +29,23 @@ export default function ProductDetailPage() {
     : 0;
 
   const handleAddToBag = () => {
+    const rect = detailImgRef.current?.getBoundingClientRect();
+    const origin = rect
+      ? { x: rect.left, y: rect.top, width: rect.width, height: rect.height }
+      : undefined;
+
     for (let i = 0; i < qty; i++) {
-      addItem({ id: product.id, name: product.name, price: product.price, discountPrice: product.discountPrice ?? undefined, image: product.image, ageGroup: product.ageGroup });
+      addItem(
+        {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          discountPrice: product.discountPrice ?? undefined,
+          image: product.image,
+          ageGroup: product.ageGroup,
+        },
+        origin
+      );
     }
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
@@ -50,7 +66,7 @@ export default function ProductDetailPage() {
         <div className="grid md:grid-cols-2 gap-10 mb-12">
           {/* Image Gallery */}
           <div>
-            <div className="relative aspect-square rounded-3xl overflow-hidden bg-piwva-warm mb-4 shadow-sm">
+            <div ref={detailImgRef} className="relative aspect-square rounded-3xl overflow-hidden bg-piwva-warm mb-4 shadow-sm">
               <Image src={images[mainImg]} alt={product.name} fill className="object-cover" priority />
               {discount > 0 && (
                 <span className="absolute top-4 left-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">

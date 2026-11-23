@@ -61,149 +61,71 @@ body {
   background: #7B9E87;
 }
 
-/* ============ ANIMATED SHOPPING BAG ============ */
+/* ============ ANIMATED SHOPPING BAG (LEFT SIDE & CUSTOM CSS CANVAS) ============ */
 .piwva-bag-container {
   position: fixed;
   bottom: 28px;
-  right: 28px;
+  left: 28px; /* POSITIONED ON LEFT SIDE */
+  right: auto;
   z-index: 1000;
 }
 
 .piwva-bag-trigger {
   position: relative;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #7B9E87 0%, #6B9E78 100%);
+  width: 68px;
+  height: 72px;
   border: none;
+  background: transparent;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 32px rgba(123,158,135,0.4), 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   outline: none;
+  padding: 0;
 }
 
 .piwva-bag-trigger:hover {
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 12px 40px rgba(123,158,135,0.5), 0 4px 16px rgba(0,0,0,0.12);
+  transform: scale(1.1) translateY(-3px);
 }
 
 .piwva-bag-trigger:active {
-  transform: scale(0.95);
+  transform: scale(0.92);
 }
 
 .piwva-bag-trigger.bag-shake {
-  animation: bag-shake-anim 0.5s cubic-bezier(0.36,0.07,0.19,0.97);
+  animation: bag-shake-anim 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
 
 @keyframes bag-shake-anim {
-  10%, 90% { transform: rotate(-4deg) scale(1.05); }
-  20%, 80% { transform: rotate(4deg) scale(1.05); }
-  30%, 50%, 70% { transform: rotate(-4deg) scale(1.1); }
-  40%, 60% { transform: rotate(4deg) scale(1.1); }
+  10%, 90% { transform: rotate(-6deg) scale(1.08); }
+  20%, 80% { transform: rotate(6deg) scale(1.08); }
+  30%, 50%, 70% { transform: rotate(-5deg) scale(1.12); }
+  40%, 60% { transform: rotate(5deg) scale(1.12); }
 }
 
-.piwva-bag-icon {
-  width: 32px;
-  height: 32px;
-  color: white;
-  transition: transform 0.3s ease;
-}
-
-.piwva-bag-trigger:hover .piwva-bag-icon {
-  transform: scale(1.1);
-}
-
-.piwva-bag-count {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  min-width: 22px;
-  height: 22px;
-  background: linear-gradient(135deg, #F4A88A, #E8845A);
-  color: white;
-  font-size: 11px;
-  font-weight: 700;
-  border-radius: 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 5px;
-  border: 2px solid #FDF8F0;
-  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-  pointer-events: none;
-}
-
-.piwva-bag-count.bounce {
-  animation: count-bounce 0.4s cubic-bezier(0.34,1.56,0.64,1);
-}
-
-@keyframes count-bounce {
-  0% { transform: scale(0.5); }
-  60% { transform: scale(1.3); }
-  100% { transform: scale(1); }
-}
-
-/* ============ FLYING PRODUCT ANIMATION ============ */
-.flying-product {
-  position: fixed;
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  overflow: hidden;
-  z-index: 9999;
-  pointer-events: none;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  transition: none;
-}
-
-.flying-product img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@keyframes fly-to-bag {
-  0% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  40% {
-    transform: scale(0.8) rotate(-15deg);
-    opacity: 0.95;
-  }
-  80% {
-    transform: scale(0.5) rotate(10deg);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(0.1) rotate(20deg);
-    opacity: 0;
-  }
-}
-
-/* ============ BAG DRAWER ============ */
+/* ============ BAG DRAWER (SLIDES OUT ON LEFT SIDE) ============ */
 .piwva-bag-drawer {
   position: fixed;
-  bottom: 100px;
-  right: 28px;
-  width: 380px;
-  max-width: calc(100vw - 40px);
-  max-height: 70vh;
+  bottom: 108px;
+  left: 28px; /* LEFT SIDE */
+  right: auto;
+  width: 390px;
+  max-width: calc(100vw - 48px);
+  max-height: 74vh;
   background: white;
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 4px 16px rgba(0,0,0,0.08);
+  border-radius: 26px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transform-origin: bottom right;
+  transform-origin: bottom left;
   z-index: 999;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(232, 213, 183, 0.6);
 }
 
 .bag-drawer-enter {
-  animation: bag-drawer-open 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  animation: bag-drawer-open 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .bag-drawer-exit {
@@ -213,7 +135,7 @@ body {
 @keyframes bag-drawer-open {
   from {
     opacity: 0;
-    transform: scale(0.6) translateY(20px);
+    transform: scale(0.6) translateY(24px);
   }
   to {
     opacity: 1;
@@ -228,8 +150,65 @@ body {
   }
   to {
     opacity: 0;
-    transform: scale(0.6) translateY(20px);
+    transform: scale(0.6) translateY(24px);
   }
+}
+
+/* ============ FULL-SCREEN BAG DROP ANIMATION ============ */
+.piwva-fullscreen-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(20, 24, 22, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+}
+
+@keyframes product-drop-into-bag {
+  0% {
+    transform: translateY(-220px) scale(0.7) rotate(-15deg);
+    opacity: 0;
+  }
+  30% {
+    transform: translateY(-120px) scale(1) rotate(6deg);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(20px) scale(0.75) rotate(-4deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(110px) scale(0.2) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+.animate-product-drop {
+  animation: product-drop-into-bag 1.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes sparkle-burst {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4) rotate(90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle-burst 0.8s ease-out forwards;
 }
 
 .bag-drawer-header {

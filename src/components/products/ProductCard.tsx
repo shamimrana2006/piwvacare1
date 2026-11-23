@@ -35,13 +35,6 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
     : 0;
 
   const handleAddToBag = () => {
-    // Trigger flying animation
-    const bagBtn = (window as any).__piwvaBagBtn as HTMLButtonElement | null;
-    const imgEl = imgRef.current;
-    if (imgEl && bagBtn && (window as any).__piwvaAddToCart) {
-      (window as any).__piwvaAddToCart(product.id, imgEl, bagBtn);
-    }
-
     const item: Omit<BagItem, "quantity"> = {
       id: product.id,
       name: product.name,
@@ -50,7 +43,12 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
       image: product.image,
       ageGroup: product.ageGroup,
     };
-    addItem(item);
+    const rect = imgRef.current?.getBoundingClientRect();
+    const origin = rect
+      ? { x: rect.left, y: rect.top, width: rect.width, height: rect.height }
+      : undefined;
+
+    addItem(item, origin);
     setAddedFlash(true);
     setTimeout(() => setAddedFlash(false), 1200);
   };
